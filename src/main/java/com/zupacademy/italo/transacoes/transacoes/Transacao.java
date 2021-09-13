@@ -15,10 +15,10 @@ public class Transacao {
     private String numero;
     private BigDecimal valor;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Estabelecimento estabelecimento;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cartao cartao;
 
     private LocalDateTime efetivadaEm;
@@ -35,5 +35,23 @@ public class Transacao {
         this.efetivadaEm = efetivadaEm;
     }
 
+    public String getNumero() {
+        return numero;
+    }
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public Estabelecimento getEstabelecimento() {
+        return estabelecimento;
+    }
+
+    public Cartao getCartao() {
+        return cartao;
+    }
+
+    public LocalDateTime getEfetivadaEm() {
+        return efetivadaEm;
+    }
 }
